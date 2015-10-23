@@ -1,5 +1,6 @@
 require 'taaze'
 require 'json'
+
 ##
 # Loads and returns full user collections
 #

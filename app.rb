@@ -25,14 +25,19 @@ class BuezeApp < Sinatra::Base
   end
 
   get '/' do
+    'Not done yet, plz update API description.'
   end
 
   get '/api/v1/collections/:user_id.json' do
+    'Not done yet, plz return collections by user_id.'
   end
 
   get '/api/v1/comments/:user_id.json' do
+    'Not done yet, plz return comments by user_id.'
   end
 
   get '/api/v1/tags/:product_id.json' do
+    content_type :json
+    get_tags(params[:product_id]).to_json
   end
 end
