@@ -25,7 +25,11 @@ class BuezeApp < Sinatra::Base
   end
 
   get '/' do
-    'Not done yet, plz update API description.'
+    'Bueze service is up and working. See more info at it\'s ' \
+    '<a href="https://github.com/BUEZE/bueze">' \
+    'Github repo</a>' \
+    '<br> Current Version: '\
+    '0.0.1'
   end
 
   get '/api/v1/collections/:user_id.json' do
