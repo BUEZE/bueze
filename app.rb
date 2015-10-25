@@ -35,8 +35,9 @@ class BuezeApp < Sinatra::Base
   get '/api/v1/user/:user_id' do
     content_type :json, charset: 'utf-8'
     user_info = {}
-    user_info['collections'] = JSON.parse(get_collections(params[:user_id]).to_json)
-    user_info['comments'] = JSON.parse(get_comments(params[:user_id]).to_json)
+    user_info['user_id'] = params[:user_id]
+    user_info['collections'] = get_collections(params[:user_id]).collections
+    user_info['comments'] = get_comments(params[:user_id]).comments
     user_info.to_json
   end
 
