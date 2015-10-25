@@ -2,6 +2,35 @@ require 'taaze'
 require 'json'
 
 ##
+# Loads and returns full user info
+#
+# Example:
+#   user_info = UserInfo.new('12522728')
+#   puts user_info.to_json
+#
+class UserInfo
+  attr_reader :user_id, :collections, :comments
+
+  def initialize(user_id)
+    @user_id = user_id
+    @collections = load_collections
+    @comments = load_comments
+  end
+
+  def to_json
+    { 'user_id' => @user_id, 'collections' => @collections, 'comments' => @comments }.to_json
+  end
+
+  def load_collections
+    Taaze::TaazeCollections.new(@user_id).collections
+  end
+
+  def load_comments
+    Taaze::TaazeComments.new(@user_id).comments
+  end
+end
+
+##
 # Loads and returns full user collections
 #
 # Example:

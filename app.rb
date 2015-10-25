@@ -5,6 +5,12 @@ require_relative './model/bookinfo'
 # Simle web service for taaze api
 class BuezeApp < Sinatra::Base
   helpers do
+    def get_userinfo(user_id)
+      UserInfo.new(user_id)
+    rescue
+      halt 404
+    end
+
     def get_collections(user_id)
       UserCollections.new(user_id)
     rescue
@@ -34,10 +40,7 @@ class BuezeApp < Sinatra::Base
 
   get '/api/v1/user/:user_id' do
     content_type :json, charset: 'utf-8'
-    { user_id: params[:user_id],
-      collections: get_collections(params[:user_id]).collections,
-      comments: get_comments(params[:user_id]).comments
-    }.to_json
+    get_userinfo(params[:user_id]).to_json
   end
 
   get '/api/v1/collections/:user_id.json' do
