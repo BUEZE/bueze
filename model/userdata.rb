@@ -13,12 +13,15 @@ class UserCollections
 
   def initialize(user_id)
     @user_id = user_id
+    @coll = load_collections
   end
 
   def to_json
+    { 'user_id' => @user_id, 'collections' => @coll}.to_json
   end
 
   def load_collections
+    Taaze::TaazeCollections.new(@user_id).collections
   end
 end
 
@@ -34,11 +37,14 @@ class UserComments
 
   def initialize(user_id)
     @user_id = user_id
+    @comments = load_comments
   end
 
   def to_json
+    { 'user_id' => @user_id, 'comments' => @comments }.to_json
   end
 
   def load_comments
+    Taaze::TaazeComments.new(@user_id).comments
   end
 end
