@@ -13,11 +13,11 @@ class UserCollections
 
   def initialize(user_id)
     @user_id = user_id
-    @coll = load_collections
+    @collections = load_collections
   end
 
   def to_json
-    { 'user_id' => @user_id, 'collections' => @coll }.to_json
+    { 'user_id' => @user_id, 'collections' => @collections }.to_json
   end
 
   def load_collections
