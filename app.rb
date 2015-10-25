@@ -29,17 +29,17 @@ class BuezeApp < Sinatra::Base
   end
 
   get '/api/v1/collections/:user_id.json' do
-    content_type :json, :charset => 'utf-8'
+    content_type :json, charset: 'utf-8'
     get_collections(params[:user_id]).to_json
   end
 
   get '/api/v1/comments/:user_id.json' do
-    content_type :json, :charset => 'utf-8'
+    content_type :json, charset: 'utf-8'
     get_comments(params[:user_id]).to_json
   end
 
   get '/api/v1/tags/:product_id.json' do
-    content_type :json, :charset => 'utf-8'
+    content_type :json, charset: 'utf-8'
     get_tags(params[:product_id]).to_json
   end
 end

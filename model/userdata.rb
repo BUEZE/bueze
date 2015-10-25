@@ -17,7 +17,7 @@ class UserCollections
   end
 
   def to_json
-    { 'user_id' => @user_id, 'collections' => @coll}.to_json
+    { 'user_id' => @user_id, 'collections' => @coll }.to_json
   end
 
   def load_collections
