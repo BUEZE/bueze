@@ -1,34 +1,9 @@
 require 'sinatra/base'
-require_relative './model/userdata'
-require_relative './model/bookinfo'
+require_relative 'bueze_helpers'
 
 # Simle web service for taaze api
 class BuezeApp < Sinatra::Base
-  helpers do
-    def get_userinfo(user_id)
-      UserInfo.new(user_id)
-    rescue
-      halt 404
-    end
-
-    def get_collections(user_id)
-      UserCollections.new(user_id)
-    rescue
-      halt 404
-    end
-
-    def get_comments(user_id)
-      UserComments.new(user_id)
-    rescue
-      halt 404
-    end
-
-    def get_tags(product_id)
-      BookInfo.new(product_id)
-    rescue
-      halt 404
-    end
-  end
+  helpers BuezeHelpers
 
   get '/' do
     'Bueze service is up and working. See more info at it\'s ' \
