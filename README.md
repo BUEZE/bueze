@@ -1,7 +1,7 @@
 # BUEZE Webservice
 [ ![Codeship Status for BUEZE/bueze](https://codeship.com/projects/73b30bd0-5f6c-0133-6679-5684d7134b37/status?branch=master)](https://codeship.com/projects/111779)  
 A simple version of web service that scrapes TAAZE data using the
-[taaze](https://github.com/BUEZE/taaze) gem.
+[taaze](https://github.com/BUEZE/taaze) gem with continuous development.
 
 Handles:
 
