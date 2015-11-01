@@ -5,6 +5,10 @@ require_relative 'bueze_helpers'
 class BuezeApp < Sinatra::Base
   helpers BuezeHelpers
 
+  configure :production, :development do
+    enable :logging
+  end
+  
   get '/' do
     'Bueze service is up and working. See more info at it\'s ' \
     '<a href="https://github.com/BUEZE/bueze">' \
