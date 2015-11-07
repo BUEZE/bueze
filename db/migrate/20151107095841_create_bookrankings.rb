@@ -28,6 +28,7 @@ class CreateBookrankings < ActiveRecord::Migration
       t.text :author
       t.date :date
       t.text :source
+      t.text :prod_id
       t.timestamps null: false
     end
   end

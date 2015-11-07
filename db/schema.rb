@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20151107095841) do
     t.text     "author"
     t.date     "date"
     t.text     "source"
+    t.text     "prod_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end

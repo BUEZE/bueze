@@ -53,6 +53,7 @@ class AppController < Sinatra::Base
       price_description: req['price_description'].to_json,
       author: req['author'].to_json,
       date: req['date'].to_json,
+      prod_id: req['prod_id'].to_json,
       source: req['source'].to_json)
     if bookranking.save
       status 201
@@ -66,7 +67,7 @@ class AppController < Sinatra::Base
   get_bookranking = lambda do
     content_type :json, charset: 'utf-8'
     begin
-      bookranking = Bookranking.find(params[:id])
+      p bookranking = Bookranking.find(params[:id])
       booknames = bookranking.booknames
       rank = bookranking.rank
       price = bookranking.price
@@ -74,6 +75,7 @@ class AppController < Sinatra::Base
       author = bookranking.author
       date = bookranking.date
       source = bookranking.source
+      prod_id = bookranking.prod_id
       logger.info({ id: bookranking.id,
                     booknames: booknames,
                     rank: rank,
@@ -81,7 +83,8 @@ class AppController < Sinatra::Base
                     price_description: price_description,
                     author: author,
                     date: date,
-                    source: source
+                    source: source,
+                    prod_id: prod_id
                     }.to_json)
     rescue
       halt 400
@@ -99,6 +102,7 @@ class AppController < Sinatra::Base
       price_description: price_description,
       author: author,
       date: date,
+      prod_id: prod_id,
       source: source
       }.to_json
   end
