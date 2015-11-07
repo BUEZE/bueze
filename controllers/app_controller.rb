@@ -2,7 +2,7 @@ require 'sinatra/base'
 
 # Simle web service for taaze api
 class AppController < Sinatra::Base
-  helpers BuezeHelpers
+  helpers BuezeHelpers, ScrapeHelpers
 
   configure :production, :development do
     enable :logging
@@ -46,20 +46,29 @@ class AppController < Sinatra::Base
       halt 400
     end
 
-    bookranking = Bookranking.new(
-      booknames: req['booknames'].to_json,
-      rank: req['rank'].to_json,
-      price: req['price'].to_json,
-      price_description: req['price_description'].to_json,
-      author: req['author'].to_json,
-      date: req['date'].to_json,
-      prod_id: req['prod_id'].to_json,
-      source: req['source'].to_json)
-    if bookranking.save
+    rankinglist = get_ranking(req['source'])
+
+    flag = true
+    rankinglist.each do |book|
+      _book = Bookranking.new(
+        booknames: book['booknames'].to_json,
+        rank: book['rank'].to_json,
+        price: book['price'].to_json,
+        price_description: book['price_description'].to_json,
+        author: book['author'].to_json,
+        date: book['date'].to_json,
+        prod_id: book['prod_id'].to_json,
+        source: book['source'].to_json)
+      unless _book.save
+        flag = false
+      end
+    end
+    
+    if flag
       status 201
-      redirect "/api/v1/bookranking/#{bookranking.id}", 303
+      redirect "/api/v1/bookranking/#{rankinglist[0]['date']}", 303
     else
-      halt 500, 'Error saving bookranking request to the database'
+      halt 500, 'Some error occured when saving bookranking request to the database'
     end
   end
 
@@ -67,7 +76,7 @@ class AppController < Sinatra::Base
   get_bookranking = lambda do
     content_type :json, charset: 'utf-8'
     begin
-      p bookranking = Bookranking.find(params[:id])
+      p bookranking = Bookranking.find(Date.parse(params[:date]))
       booknames = bookranking.booknames
       rank = bookranking.rank
       price = bookranking.price
@@ -108,7 +117,7 @@ class AppController < Sinatra::Base
   end
 
   # Web API Routes
-  get '/api/v1/bookranking/:id', &get_bookranking
+  get '/api/v1/bookranking/:date', &get_bookranking
   post '/api/v1/bookranking', &post_bookranking
   post '/api/v1/bookranking/', &post_bookranking
 end
