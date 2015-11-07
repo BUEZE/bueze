@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107095841) do
-  create_table 'bookrankings', force: :cascade do |t|
-    t.string 'description'
-    t.text 'booknames'
-    t.integer 'rank'
-    t.integer 'price'
-    t.text 'author'
-    t.date 'date'
-    t.datetime 'created_at',  null: false
-    t.datetime 'updated_at',  null: false
+ActiveRecord::Schema.define(version: 20151107114324) do
+
+  create_table "bookrankings", force: :cascade do |t|
+    t.string   "description"
+    t.text     "booknames"
+    t.integer  "rank"
+    t.integer  "price"
+    t.text     "author"
+    t.date     "date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
 end

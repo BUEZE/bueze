@@ -46,3 +46,6 @@ A simple version of web service that scrapes TAAZE data using the
 - Create Database
 
 - Database Development
+
+## JSON Post Format
+  `{"description":"An awesome book","booknames":"The book name","rank":1,"price":689,"author":"Chicago","date":"May-26-1999"}`
