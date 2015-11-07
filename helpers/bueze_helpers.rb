@@ -1,6 +1,3 @@
-require_relative './model/userdata'
-require_relative './model/bookinfo'
-
 # Helpers for main sinarta web application
 module BuezeHelpers
   def get_userinfo(user_id)
