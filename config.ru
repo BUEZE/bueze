@@ -1,2 +1,2 @@
-require './app.rb'
-run BuezeApp
+require './controllers/app_controller.rb'
+run AppController

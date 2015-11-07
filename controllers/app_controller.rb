@@ -1,14 +1,13 @@
 require 'sinatra/base'
-require_relative 'bueze_helpers'
 
 # Simle web service for taaze api
-class BuezeApp < Sinatra::Base
+class AppController < Sinatra::Base
   helpers BuezeHelpers
 
   configure :production, :development do
     enable :logging
   end
-  
+
   get '/' do
     'Bueze service is up and working. See more info at it\'s ' \
     '<a href="https://github.com/BUEZE/bueze">' \

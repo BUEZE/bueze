@@ -1,3 +1,4 @@
+Dir.glob('./{models,helpers,controllers}/*.rb').each { |file| require file }
 require 'rake/testtask'
 
 task default: [:spec]
