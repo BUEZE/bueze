@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20151107095841) do
   create_table "bookrankings", force: :cascade do |t|
     t.text     "booknames"
     t.integer  "rank"
-    t.float    "price_description"
+    t.text     "price_description"
     t.integer  "price"
     t.text     "author"
     t.date     "date"
