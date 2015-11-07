@@ -3,7 +3,7 @@
 A simple version of web service that scrapes TAAZE data using the
 [taaze](https://github.com/BUEZE/taaze) gem with continuous development using CodeShip and Heroku.
 
-Handles:
+### Handles:
 
 - GET /
   - returns OK status to indicate service is alive  
@@ -21,7 +21,7 @@ Handles:
 - GET /api/v1/tags/{product_id}.json
     - returns JSON of book info: product_id, tags
 
-Example:
+### Example:
 
 - Get info of user 12522728 :
 
@@ -38,3 +38,11 @@ Example:
 - Get tags of book 11100763252 :
 
 	`/api/v1/tags/11100763252.json`
+
+### Todo:
+
+- Application Controller (Richo)
+
+- Create Database
+
+- Database Development
