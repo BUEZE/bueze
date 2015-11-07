@@ -8,11 +8,11 @@ class BookRankingList
   API_URL = 'http://www.taaze.tw/beta/actAllBooksDataAgent.jsp?k=01&t=11&startNum=0&endNum=09&d=00&c=00&a=01&l=0'
 
   def initialize(source)
-    parse_html
+    parse_html(source)
   end
 
   def ranking
-    @ranking |= extract_ranking
+    @ranking ||= extract_ranking
   end
 
   def parse_html(source)
@@ -35,3 +35,4 @@ class BookRankingList
     end
     rankings
   end
+end
