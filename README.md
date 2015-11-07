@@ -47,5 +47,22 @@ A simple version of web service that scrapes TAAZE data using the
 
 - Database Development
 
+## Database version pre-install
+
+- Install postgres (OS X: `brew install postgres`)
+
+- bundle install
+ 
+- `rake db:create_migration NAME=create_bookranking` to create your local database
+
+
 ## JSON Post Format
-  `{"description":"An awesome book","booknames":"The book name","rank":1,"price":689,"author":"Chicago","date":"May-26-1999"}`
+  `{  
+   "booknames":"Chicago love story",
+   "rank":3,
+   "price":689,
+   "price_description":7.9,
+   "author":"Hiraku",
+   "date":"10-01-1949",
+   "source":"USA"
+  }`
