@@ -1,7 +1,7 @@
 require 'sinatra/base'
 
 # Simle web service for taaze api
-class BuezeApp < Sinatra::Base
+class AppController < Sinatra::Base
   helpers BuezeHelpers
 
   configure :production, :development do

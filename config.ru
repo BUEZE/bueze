@@ -1,2 +1,2 @@
-require './controllers/app.rb'
-run ApplicationController
+require './controllers/app_controller.rb'
+run AppController
