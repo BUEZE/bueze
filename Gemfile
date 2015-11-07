@@ -18,10 +18,10 @@ group :test do
 end
 
 group :development do
- gem 'sqlite3'
+  gem 'sqlite3'
 end
 
 group :production do
- gem 'pg'
- # brew install postgres
+  gem 'pg'
+  # brew install postgres
 end
