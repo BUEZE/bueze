@@ -7,7 +7,7 @@ class BookRankingList
   # API for Taaze Chinese Rank 10 
   API_URL = 'http://www.taaze.tw/beta/actAllBooksDataAgent.jsp?k=01&t=11&startNum=0&endNum=09&d=00&c=00&a=01&l=0'
 
-  def initialize
+  def initialize(source)
     parse_html
   end
 
@@ -15,7 +15,7 @@ class BookRankingList
     @ranking |= extract_ranking
   end
 
-  def parse_html
+  def parse_html(source)
     @doc = JSON.parse(open(API_URL).read)['result1']
   end
 
