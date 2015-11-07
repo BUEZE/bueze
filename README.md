@@ -49,6 +49,8 @@ A simple version of web service that scrapes TAAZE data using the
 
 ## Database version pre-install
 
+- Install postgres (OS X: `brew install postgres`)
+
 - bundle install
  
 - `rake db:create_migration NAME=create_bookranking` to create your local database
