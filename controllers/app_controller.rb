@@ -76,44 +76,13 @@ class AppController < Sinatra::Base
   get_bookranking = lambda do
     content_type :json, charset: 'utf-8'
     begin
-      p bookranking = Bookranking.find(Date.parse(params[:date]))
-      booknames = bookranking.booknames
-      rank = bookranking.rank
-      price = bookranking.price
-      price_description = bookranking.price_description
-      author = bookranking.author
-      date = bookranking.date
-      source = bookranking.source
-      prod_id = bookranking.prod_id
-      logger.info({ id: bookranking.id,
-                    booknames: booknames,
-                    rank: rank,
-                    price: price,
-                    price_description: price_description,
-                    author: author,
-                    date: date,
-                    source: source,
-                    prod_id: prod_id
-                    }.to_json)
+      p bookranking = Bookranking.where(date: Date.parse(params[:date]))
+      logger.info(bookranking.to_json)
     rescue
       halt 400
     end
 
-    # begin
-    #   results = check_badges(usernames, badges)
-    # rescue
-    #   halt 500, 'Lookup of Codecademy failed'
-    # end
-    { id: bookranking.id,
-      booknames: booknames,
-      rank: rank,
-      price: price,
-      price_description: price_description,
-      author: author,
-      date: date,
-      prod_id: prod_id,
-      source: source
-      }.to_json
+    bookranking.to_json
   end
 
   # Web API Routes
