@@ -23,11 +23,12 @@ class CreateBookrankings < ActiveRecord::Migration
     create_table :bookrankings do |t|
       t.text :booknames
       t.integer :rank
-      t.float :price_description
+      t.text :price_description
       t.integer :price
       t.text :author
       t.date :date
       t.text :source
+      t.text :prod_id
       t.timestamps null: false
     end
   end
