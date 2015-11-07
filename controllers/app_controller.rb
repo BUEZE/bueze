@@ -36,7 +36,6 @@ class AppController < Sinatra::Base
     get_tags(params[:product_id]).to_json
   end
 
-
   # Post bookrank JSON data and save to database
   post_bookranking = lambda do
     content_type :json
@@ -75,7 +74,7 @@ class AppController < Sinatra::Base
       author = bookranking.author
       date = bookranking.date
       source = bookranking.source
-      logger.info({ id: bookranking.id, 
+      logger.info({ id: bookranking.id,
                     booknames: booknames,
                     rank: rank,
                     price: price,
@@ -93,7 +92,7 @@ class AppController < Sinatra::Base
     # rescue
     #   halt 500, 'Lookup of Codecademy failed'
     # end
-    { id: bookranking.id, 
+    { id: bookranking.id,
       booknames: booknames,
       rank: rank,
       price: price,
