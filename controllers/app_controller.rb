@@ -59,11 +59,9 @@ class AppController < Sinatra::Base
         date: book['date'].to_json,
         prod_id: book['prod_id'].to_json,
         source: book['source'].to_json)
-      unless _book.save
-        flag = false
-      end
+      flag = false unless _book.save
     end
-    
+
     if flag
       status 201
       redirect "/api/v1/bookranking/#{rankinglist[0]['date']}", 303

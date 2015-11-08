@@ -21,6 +21,10 @@ A simple version of web service that scrapes TAAZE data using the
 - GET /api/v1/tags/{product_id}.json
     - returns JSON of book info: product_id, tags
 
+- POST /api/v1/bookranking
+    - takes JSON (format described below)
+    - redirects (303) to GET /api/v1/bookranking/
+
 ### Example:
 
 - Get info of user 12522728 :
@@ -54,7 +58,6 @@ A simple version of web service that scrapes TAAZE data using the
 - bundle install
  
 - `rake db:create_migration NAME=create_bookranking` to create your local database
-
 
 ## JSON Post Format
   `{  
