@@ -43,29 +43,23 @@ A simple version of web service that scrapes TAAZE data using the
 
 	`/api/v1/tags/11100763252.json`
 
-### Todo:
-
-- Application Controller (Richo)
-
-- Create Database
-
-- Database Development
-
 ## Database version pre-install
 
 - Install postgres (OS X: `brew install postgres`)
 
 - bundle install
- 
+
 - `rake db:create_migration NAME=create_bookranking` to create your local database
 
 ## JSON Post Format
-  `{  
-   "booknames":"Chicago love story",
-   "rank":3,
-   "price":689,
-   "price_description":7.9,
-   "author":"Hiraku",
-   "date":"10-01-1949",
-   "source":"USA"
-  }`
+  ```JSON
+{
+  "booknames": "Chicago love story",
+  "rank": 3,
+  "price": 689,
+  "price_description": 7.9,
+  "author": "Hiraku",
+  "date": "10-01-1949",
+  "source": "USA"
+}
+  ```
