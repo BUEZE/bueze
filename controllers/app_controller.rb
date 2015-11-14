@@ -22,29 +22,26 @@ class AppController < Sinatra::Base
     end
   end
 
-  get '/api/v1/user/:user_id' do
+  get_user = lambda do
     content_type :json, charset: 'utf-8'
     get_userinfo(params[:user_id]).to_json
   end
 
-  get '/api/v1/collections/:user_id.json' do
+  get_user_collections = lambda do
     content_type :json, charset: 'utf-8'
     get_collections(params[:user_id]).to_json
   end
 
-  get '/api/v1/comments/:user_id.json' do
+  get_user_comments = lambda do
     content_type :json, charset: 'utf-8'
     get_comments(params[:user_id]).to_json
   end
 
-  get '/api/v1/tags/:product_id.json' do
+  get_product_tags = lambda do
     content_type :json, charset: 'utf-8'
     get_tags(params[:product_id]).to_json
   end
 
-  app_get_root = lambda do
-    slim :home
-  end
   # Post bookrank JSON data and save to database
   post_bookranking = lambda do
     content_type :json
@@ -94,8 +91,18 @@ class AppController < Sinatra::Base
   end
 
   # Web API Routes
-  get '/', &app_get_root
+  get '/api/v1/user/:user_id', &get_user
+  get '/api/v1/collections/:user_id.json', &get_user_collections
+  get '/api/v1/comments/:user_id.json', &get_user_comments
+  get '/api/v1/tags/:product_id.json', &get_product_tags
   get '/api/v1/bookranking/:date', &get_bookranking
   post '/api/v1/bookranking', &post_bookranking
   post '/api/v1/bookranking/', &post_bookranking
+
+  app_get_root = lambda do
+    slim :home
+  end
+
+  # Web App Views Routes
+  get '/', &app_get_root
 end
