@@ -128,8 +128,6 @@ class AppController < Sinatra::Base
       return nil
     end
 
-    puts @userinfo.to_json
-
     slim :user
   end
 
