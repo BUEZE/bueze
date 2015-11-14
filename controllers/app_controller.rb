@@ -13,6 +13,15 @@ class AppController < Sinatra::Base
     enable :logging
   end
 
+  helpers do
+    def current_page?(path = ' ')
+      path_info = request.path_info
+      path_info += ' ' if path_info == '/'
+      request_path = path_info.split '/'
+      request_path[1] == path
+    end
+  end
+
   get '/api/v1/user/:user_id' do
     content_type :json, charset: 'utf-8'
     get_userinfo(params[:user_id]).to_json
