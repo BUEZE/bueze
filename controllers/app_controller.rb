@@ -108,6 +108,7 @@ class AppController < Sinatra::Base
   end
 
   app_get_bookranking = lambda do
+    @date = params[:date]
     slim :bookranking
   end
 
