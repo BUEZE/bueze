@@ -107,12 +107,34 @@ class AppController < Sinatra::Base
     slim :home
   end
 
-  app_get_bookranking = lambda do
-    @date = params[:date]
-    slim :bookranking
+  app_get_user = lambda do
+    @user_id = params[:user_id]
+
+    if @user_id
+      redirect "/user/#{@user_id}"
+      return nil
+    end
+
+    slim :user
+  end
+
+  app_get_userinfo = lambda do
+    @user_id = params[:user_id]
+    @userinfo = get_userinfo(@user_id)
+
+    if @user_id && @userinfo.nil?
+      flash[:notice] = 'User not found' if @userinfo.nil?
+      redirect '/user'
+      return nil
+    end
+
+    puts @userinfo.to_json
+
+    slim :user
   end
 
   # Web App Views Routes
   get '/', &app_get_root
-  get '/bookranking', &app_get_bookranking
+  get '/user', &app_get_user
+  get '/user/:user_id', &app_get_userinfo
 end
