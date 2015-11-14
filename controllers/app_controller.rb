@@ -59,7 +59,7 @@ class AppController < Sinatra::Base
 
     flag = true
     rankinglist.each do |book|
-      _book = Bookranking.new(
+      bookranking = Bookranking.new(
         booknames: book['booknames'].to_json,
         rank: book['rank'].to_json,
         price: book['price'].to_json,
@@ -68,14 +68,15 @@ class AppController < Sinatra::Base
         date: book['date'].to_json,
         prod_id: book['prod_id'].to_json,
         source: book['source'].to_json)
-      flag = false unless _book.save
+      flag = false unless bookranking.save
     end
 
     if flag
       status 201
       redirect "/api/v1/bookranking/#{rankinglist[0]['date']}", 303
     else
-      halt 500, 'Some error occured when saving bookranking request to the database'
+      halt 500, 'Some error occured when '\
+                'saving bookranking request to the database'
     end
   end
 
