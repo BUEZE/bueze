@@ -1,10 +1,14 @@
 require 'sinatra/base'
+require 'sinatra/flash'
+require 'httparty'
 require 'hirb'
 require 'slim'
 
 # Simle web service for taaze api
 class AppController < Sinatra::Base
   helpers BuezeHelpers, ScrapeHelpers
+  register Sinatra::Flash
+  use Rack::MethodOverride
 
   set :views, File.expand_path('../../views', __FILE__)
   set :public_folder, File.expand_path('../../public', __FILE__)
@@ -103,6 +107,11 @@ class AppController < Sinatra::Base
     slim :home
   end
 
+  app_get_bookranking = lambda do
+    slim :bookranking
+  end
+
   # Web App Views Routes
   get '/', &app_get_root
+  get '/bookranking', &app_get_bookranking
 end

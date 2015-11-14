@@ -7,3 +7,9 @@
       - else
         li
           a href='/' id='home'  Home
+      - if current_page?('bookranking')
+        li class='current_page_item'
+          a href='/bookranking' id='bookranking'  Book Ranking
+      - else
+        li
+          a href='/bookranking' id='bookranking'  Book Ranking

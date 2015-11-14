@@ -7,8 +7,12 @@ gem 'json'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'tux'
+
+gem 'httparty'
+
 gem 'hirb'
 gem 'slim'
+gem 'sinatra-flash'
 
 group :test do
   gem 'minitest'
