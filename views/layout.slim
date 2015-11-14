@@ -1,0 +1,12 @@
+doctype 5
+html
+  head
+    title Bueze
+    link rel='stylesheet' type='text/css' href='/style.css'
+  body
+    header
+      == slim :nav
+    section
+      == yield
+    .footer
+      == slim :footer
