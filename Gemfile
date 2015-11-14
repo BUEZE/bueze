@@ -7,6 +7,8 @@ gem 'json'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'tux'
+gem 'hirb'
+gem 'slim'
 
 group :test do
   gem 'minitest'

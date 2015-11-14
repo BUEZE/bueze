@@ -1,19 +1,16 @@
 require 'sinatra/base'
+require 'hirb'
+require 'slim'
 
 # Simle web service for taaze api
 class AppController < Sinatra::Base
   helpers BuezeHelpers, ScrapeHelpers
 
+  set :views, File.expand_path('../../views', __FILE__)
+  set :public_folder, File.expand_path('../../public', __FILE__)
+
   configure :production, :development do
     enable :logging
-  end
-
-  get '/' do
-    'Bueze service is up and working. See more info at it\'s ' \
-    '<a href="https://github.com/BUEZE/bueze">' \
-    'Github repo</a>' \
-    '<br> Current Version: '\
-    '0.0.1'
   end
 
   get '/api/v1/user/:user_id' do
@@ -36,6 +33,9 @@ class AppController < Sinatra::Base
     get_tags(params[:product_id]).to_json
   end
 
+  app_get_root = lambda do
+    slim :home
+  end
   # Post bookrank JSON data and save to database
   post_bookranking = lambda do
     content_type :json
@@ -84,6 +84,7 @@ class AppController < Sinatra::Base
   end
 
   # Web API Routes
+  get '/', &app_get_root
   get '/api/v1/bookranking/:date', &get_bookranking
   post '/api/v1/bookranking', &post_bookranking
   post '/api/v1/bookranking/', &post_bookranking
