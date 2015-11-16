@@ -3,6 +3,8 @@
 A simple version of web service that scrapes TAAZE data using the
 [taaze](https://github.com/BUEZE/taaze) gem with continuous development using CodeShip and Heroku.
 
+Here's the [link](http://bueze.herokuapp.com/) to our project.
+
 ### Handles:
 
 - GET /
