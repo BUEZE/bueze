@@ -32,8 +32,8 @@ class CheckBookrankingFromAPI
   def initialize(api_url, form)
     @api_url = api_url
     params = form.attributes.delete_if { |_, value| value.blank? }
-    @options =  { body: params.to_json,
-                  headers: { 'Content-Type' => 'application/json' }
+    @options = { body: params.to_json,
+                 headers: { 'Content-Type' => 'application/json' }
                 }
   end
 

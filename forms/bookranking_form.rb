@@ -42,7 +42,6 @@ class BookrankingForm
   validates :source, presence: true
   validates :prod_id, presence: true
 
-
   def error_fields
     errors.messages.keys.map(&:to_s).join(', ')
   end

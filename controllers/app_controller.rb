@@ -19,7 +19,7 @@ class AppController < Sinatra::Base
 
   API_BASE_URI = 'http://bueze.herokuapp.com'
   API_VER = '/api/v3/'
-  
+
   helpers do
     def current_page?(path = ' ')
       path_info = request.path_info
