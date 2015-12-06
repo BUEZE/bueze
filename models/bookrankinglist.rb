@@ -2,9 +2,9 @@ require 'json'
 require 'open-uri'
 require 'date'
 
+# BookRankingList
 class BookRankingList
-  
-  # API for Taaze Chinese Rank 10 
+  # API for Taaze Chinese Rank 10
   API_URL = 'http://www.taaze.tw/beta/actAllBooksDataAgent.jsp?k=01&t=11&startNum=0&endNum=09&d=00&c=00&a=01&l=0'
 
   def initialize(source)
@@ -27,7 +27,7 @@ class BookRankingList
       book['rank'] = i + 1
       book['price_description'] = data['saleDisc']
       book['price'] = data['salePrice'].to_i
-      book['author'] = data['author'] 
+      book['author'] = data['author']
       book['date'] = Date.today
       book['source'] = 'taaze'
       book['prod_id'] = data['prodID']
