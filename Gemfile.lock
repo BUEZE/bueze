@@ -14,7 +14,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.8)
+    addressable (2.4.0)
     arel (6.0.3)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
@@ -42,7 +42,7 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_xml (0.5.5)
-    nokogiri (1.6.7)
+    nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     pg (0.18.4)
     rack (1.6.4)
@@ -89,7 +89,7 @@ GEM
       sinatra (>= 1.2.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    vcr (3.0.0)
+    vcr (3.0.1)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -126,4 +126,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
