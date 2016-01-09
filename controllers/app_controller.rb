@@ -107,6 +107,18 @@ class AppController < Sinatra::Base
     bookhistory.to_json
   end
 
+  search_book = lambda do
+    content_type :json, charset: 'utf-8'
+    begin
+      p booksearch = BookSearchTaaze.new(params[:name]).pricelist
+      logger.info(params[:name])
+      logger.info(booksearch.to_json)
+    rescue
+      halt 400
+    end
+    booksearch.to_json
+  end
+
   # Web API Routes
   get '/api/v1/user/:user_id', &get_user
   get '/api/v1/collections/:user_id.json', &get_user_collections
@@ -114,6 +126,7 @@ class AppController < Sinatra::Base
   get '/api/v1/tags/:product_id.json', &get_product_tags
   get '/api/v1/bookranking/:date', &get_bookranking
   get '/api/v1/get_bookhistory/:name', &get_bookhistory
+  get '/api/v1/search_book/:name', &search_book
   post '/api/v1/bookranking', &post_bookranking
   post '/api/v1/bookranking/', &post_bookranking
 
