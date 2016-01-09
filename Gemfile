@@ -8,7 +8,6 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'tux'
 gem 'nokogiri'
-gem 'URI'
 
 gem 'httparty'
 
