@@ -1,7 +1,7 @@
 require 'json'
 require 'open-uri'
 require 'date'
-require 'URI'
+require 'uri'
 require 'nokogiri'
 
 class BookSearchTaaze
