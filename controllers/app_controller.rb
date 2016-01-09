@@ -58,20 +58,6 @@ class AppController < Sinatra::Base
 
     rankinglist = get_ranking(req['source'])
 
-#    rankinglist.each do |book|
-#      form = BookrankingForm.new(book)
-#      unless form.valid?
-#        puts 'error'
-#        error_send(back, "Following fields are required: #{form.error_fields}")
-#      end
-
-#      results = CheckBookrankingFromAPI.new(bueze_api_url('bookranking'), form).call
-#      error_send back, 'Could not find book' if (results.code != 200)
-
- #     session[:results] = results
-#      flash[:notice] = 'You may bookmark this query and return later for updates'
-#      redirect "#{API_VER}/bookranking/#{form.date}"
-#    end
     flag = true
     rankinglist.each do |book|
       bookranking = Bookranking.new(
@@ -83,7 +69,7 @@ class AppController < Sinatra::Base
         date: book['date'].to_json,
         prod_id: book['prod_id'].to_json,
         source: book['source'].to_json)
-        flag = false unless bookranking.save
+      flag = false unless bookranking.save
     end
 
     if flag
@@ -108,12 +94,26 @@ class AppController < Sinatra::Base
     bookranking.to_json
   end
 
+  # Get the book history
+  get_bookhistory = lambda do
+    content_type :json, charset: 'utf-8'
+    begin
+      p bookhistory = Bookranking.where(booknames: '"' + params[:name] + '"')
+      logger.info(bookhistory.to_json)
+    rescue
+      halt 400
+    end
+
+    bookhistory.to_json
+  end
+
   # Web API Routes
   get '/api/v1/user/:user_id', &get_user
   get '/api/v1/collections/:user_id.json', &get_user_collections
   get '/api/v1/comments/:user_id.json', &get_user_comments
   get '/api/v1/tags/:product_id.json', &get_product_tags
   get '/api/v1/bookranking/:date', &get_bookranking
+  get '/api/v1/get_bookhistory/:name', &get_bookhistory
   post '/api/v1/bookranking', &post_bookranking
   post '/api/v1/bookranking/', &post_bookranking
 
