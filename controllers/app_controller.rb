@@ -94,12 +94,26 @@ class AppController < Sinatra::Base
     bookranking.to_json
   end
 
+  # Get the book history
+  get_bookhistory = lambda do
+    content_type :json, charset: 'utf-8'
+    begin
+      p bookhistory = Bookranking.where(booknames: '"' + params[:name] + '"')
+      logger.info(bookhistory.to_json)
+    rescue
+      halt 400
+    end
+
+    bookhistory.to_json
+  end
+
   # Web API Routes
   get '/api/v1/user/:user_id', &get_user
   get '/api/v1/collections/:user_id.json', &get_user_collections
   get '/api/v1/comments/:user_id.json', &get_user_comments
   get '/api/v1/tags/:product_id.json', &get_product_tags
   get '/api/v1/bookranking/:date', &get_bookranking
+  get '/api/v1/get_bookhistory/:name', &get_bookhistory
   post '/api/v1/bookranking', &post_bookranking
   post '/api/v1/bookranking/', &post_bookranking
 
