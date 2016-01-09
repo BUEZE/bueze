@@ -58,20 +58,6 @@ class AppController < Sinatra::Base
 
     rankinglist = get_ranking(req['source'])
 
-#    rankinglist.each do |book|
-#      form = BookrankingForm.new(book)
-#      unless form.valid?
-#        puts 'error'
-#        error_send(back, "Following fields are required: #{form.error_fields}")
-#      end
-
-#      results = CheckBookrankingFromAPI.new(bueze_api_url('bookranking'), form).call
-#      error_send back, 'Could not find book' if (results.code != 200)
-
- #     session[:results] = results
-#      flash[:notice] = 'You may bookmark this query and return later for updates'
-#      redirect "#{API_VER}/bookranking/#{form.date}"
-#    end
     flag = true
     rankinglist.each do |book|
       bookranking = Bookranking.new(
@@ -83,7 +69,7 @@ class AppController < Sinatra::Base
         date: book['date'].to_json,
         prod_id: book['prod_id'].to_json,
         source: book['source'].to_json)
-        flag = false unless bookranking.save
+      flag = false unless bookranking.save
     end
 
     if flag
