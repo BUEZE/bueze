@@ -38,7 +38,7 @@ class BookSearchTaaze
         book = {}
         book['source'] = 'taaze'
         style_str = r.at_css('.one')['style']
-        book['img'] = style_str[style_str.index(/\(/)+1..style_str.index(/\)/)-1]
+        book['img'] = style_str[style_str.index(/\(/)+2..style_str.index(/\)/)-2]
         id = r.at_css('.one')['rel']
         data = JSON.parse(open(BOOK_INFO_URL+id).read)[0]
         book['author'] = data['author']
