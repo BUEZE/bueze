@@ -30,7 +30,7 @@ class BookRankingList
       book['author'] = data['author']
       book['date'] = Date.today
       book['source'] = 'taaze'
-      book['prod_id'] = data['prodID']
+      book['prod_id'] = data['prodId']
       rankings << book
     end
     rankings
