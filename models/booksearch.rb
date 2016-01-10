@@ -46,6 +46,7 @@ class BookSearchTaaze
         book['ori_price'] = r.at_css('.two').css('ul li>span')[0].css('span')[0].text 
         book['price'] = r.at_css('.two').css('ul li>span')[1].css('span')[1].text
         book['link'] = BOOK_CONTENT_URL + id
+        book['id'] = id
         pricelist << book
       end
     end
