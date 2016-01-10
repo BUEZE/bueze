@@ -110,7 +110,9 @@ class AppController < Sinatra::Base
   search_book = lambda do
     content_type :json, charset: 'utf-8'
     begin
-      p booksearch = BookSearchTaaze.new(params[:name]).pricelist
+      p booksearch = []
+      booksearch += BookSearchTaaze.new(params[:name]).pricelist
+      booksearch += BookSearchBooks.new(params[:name]).pricelist
       logger.info(params[:name])
       logger.info(booksearch.to_json)
     rescue
