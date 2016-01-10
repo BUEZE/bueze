@@ -78,7 +78,7 @@ class BookSearchBooks
         book['link'] = r.at_css('h3 a')['href']
         book['author'] = r.at_css('a[rel=go_author]').text
         book['ori_price'] = '--'
-        book['price'] = r.css('span.price strong b')[1].text
+        book['price'] = r.css('span.price b')[1] ? r.css('span.price b')[1].text : r.css('span.price b')[0].text
         pricelist << book
       end
     end
